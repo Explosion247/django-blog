@@ -5,8 +5,11 @@ from django.contrib.auth.models import User
 
 STATUS = ((0, "Draft"),(1, "Published"))
 
-class Post(models.Model):
+class About(models.Model):
 
     title = models.CharField(max_length=200, unique=True)
     content = models.TextField()
     updated_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
