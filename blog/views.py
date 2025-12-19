@@ -68,7 +68,7 @@ def comment_edit(request, slug, comment_id):
     """
     view to edit comments
     """
-    if request.method =="POST":
+    if request.method == "POST":
 
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -81,8 +81,7 @@ def comment_edit(request, slug, comment_id):
             comment.approved = False
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
-
-        else: 
+        else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
-    
+
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
